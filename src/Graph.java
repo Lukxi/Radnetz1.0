@@ -24,10 +24,14 @@ public class Graph {
     }
 
     private void adjazenmatrixAusgeben(){
+        System.out.println("");
+        System.out.println("Die Adjazenzenmatrix lautet:");
 
-        for (int i = 0; i<maxAnzahl; i++){
-            for (int a = 0; i< maxAnzahl;i++)
-                System.out.println(adjazenmatrix[i][a]);
+        for (int i = 0; i<maxAnzahl; i++) {
+            for (int a = 0; i < maxAnzahl; i++){
+                System.out.print(adjazenmatrix[i][a] + ",");
+        }
+        System.out.println("");
         }
     }
 
