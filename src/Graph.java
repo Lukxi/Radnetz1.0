@@ -3,7 +3,7 @@ public class Graph {
     public Knoten[] knotenfeld;
     private int anzahlKnoten;
     private int maxAnzahl;
-    private int[][] adjazenmatrix;
+    public int[][] adjazenmatrix;
 
     public Graph(int maxAnzahlKnoten){
         adjazenmatrix = new int[maxAnzahlKnoten][maxAnzahlKnoten];
@@ -32,7 +32,7 @@ public class Graph {
         System.out.println("Die Adjazenzenmatrix lautet:");
 
         for (int i = 0; i<  maxAnzahl; i++) {
-            for (int a = 0; i < maxAnzahl; i++){
+            for (int a = 0; a < maxAnzahl; a++){
                 System.out.print(adjazenmatrix[i][a] + ",");
         }
         System.out.println(" ");
@@ -65,6 +65,16 @@ public class Graph {
             System.out.println("Start oder Zielwert nicht gefunden!");
         }else
             adjazenmatrix[start][Ziel] = bewertung;
+
+    }
+
+    public void kanteLoeschen(int start, int Ziel){
+
+        if (start > maxAnzahl || Ziel > maxAnzahl){
+            System.out.println("Start oder Zielwert nicht gefunden!");
+        }else
+            adjazenmatrix[start][Ziel] = -1;
+
 
     }
 
