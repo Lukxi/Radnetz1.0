@@ -78,4 +78,22 @@ public class Graph {
 
     }
 
+    public void tiefensucheStarten(int startKnotenNR){
+        for (int i = 0; i<anzahlKnoten;i++){
+                knotenfeld[i].setBesucht(false);
+        }
+        if (startKnotenNR >= 0 && startKnotenNR<anzahlKnoten){
+            tiefensucheDurchführen(startKnotenNR);
+        }
+    }
+
+    public void tiefensucheDurchführen(int knotenNR){
+        knotenfeld[knotenNR].setBesucht(true);
+        knotenfeld[knotenNR].getDaten().ausgeben();
+        for (int j = 0; j < anzahlKnoten; j++){
+            if (adjazenmatrix[knotenNR][j] > 0 && !(knotenfeld[j].isBesucht())){
+                tiefensucheDurchführen(j);
+            }
+        }
+    }
 }
