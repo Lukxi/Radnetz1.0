@@ -20,6 +20,7 @@ class Test
         int b = radnetz.knotenHiinzuefuzegen(new Ortschaft("Burg", 50, "Historische Burg"));
         int n = radnetz.knotenHiinzuefuzegen(new Ortschaft("Neustadt", 80, "Einkaufszentrum"));
         int r = radnetz.knotenHiinzuefuzegen(new Ortschaft("Rain", 50, "Klettergarten"));
+        int g = radnetz.knotenHiinzuefuzegen(new Ortschaft("Gruab", 10, "nix"));
 
         //Zu Testzwecken werden Kanten zwischen obigen Knoten festgelegt.
         radnetz.kanteHinzufuegen(a,f,20);
@@ -37,6 +38,7 @@ class Test
         radnetz.kanteHinzufuegen(r,b,25);
         radnetz.tiefensucheStarten(z);
         radnetz.pfadAusgeben();
+        System.out.println(radnetz.erreichbarStarten(z,g));
     }
 
     public Graph getRadnetz() {

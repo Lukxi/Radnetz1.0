@@ -108,4 +108,31 @@ public class Graph {
             System.out.print(pfad.get(i)+"-> ");
         }
     }
+    public boolean erreichbarStarten(int startknotenNR, int zielKnotenNR) {
+        if (startknotenNR == zielKnotenNR)
+            System.out.println("Startknoten == Zielknoten!");
+        for (int i = 0; i < anzahlKnoten; i++) {
+            knotenfeld[i].setBesucht(false);
+        }
+        if (startknotenNR >= 0 && startknotenNR < anzahlKnoten) {
+           return erreichbar(startknotenNR, zielKnotenNR);
+        }else
+            return false;
+    }
+
+    public boolean erreichbar(int startknotenNR, int zielKnotenNR){
+
+            knotenfeld[startknotenNR].setBesucht(true);
+        for (int j = 0; j < anzahlKnoten; j++){
+            if (adjazenmatrix[startknotenNR][j] > 0 && !(knotenfeld[j].isBesucht())){
+                if (adjazenmatrix[startknotenNR][j] == adjazenmatrix[startknotenNR][zielKnotenNR]){
+                    return true;
+                }else
+                 return erreichbar(j, zielKnotenNR);
+            }
+
+        }
+        return false;
+    }
 }
+
