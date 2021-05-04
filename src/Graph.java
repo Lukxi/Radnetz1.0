@@ -1,9 +1,12 @@
+import java.util.ArrayList;
+
 public class Graph {
 
     public Knoten[] knotenfeld;
     private int anzahlKnoten;
     private int maxAnzahl;
     public int[][] adjazenmatrix;
+    public ArrayList<String> pfad = new ArrayList<>();
 
     public Graph(int maxAnzahlKnoten){
         adjazenmatrix = new int[maxAnzahlKnoten][maxAnzahlKnoten];
@@ -90,10 +93,19 @@ public class Graph {
     public void tiefensucheDurchführen(int knotenNR){
         knotenfeld[knotenNR].setBesucht(true);
         knotenfeld[knotenNR].getDaten().ausgeben();
+        if (knotenfeld[knotenNR].getDaten() instanceof Ortschaft)
+            pfad.add(((Ortschaft) knotenfeld[knotenNR].getDaten()).getName());
         for (int j = 0; j < anzahlKnoten; j++){
             if (adjazenmatrix[knotenNR][j] > 0 && !(knotenfeld[j].isBesucht())){
                 tiefensucheDurchführen(j);
             }
+        }
+    }
+
+    public void pfadAusgeben(){
+        System.out.println("Der Pfad ist: ");
+        for (int i = 0; i < pfad.size(); i++){
+            System.out.print(pfad.get(i)+"-> ");
         }
     }
 }

@@ -36,6 +36,7 @@ class Test
         radnetz.kanteHinzufuegen(n,r,20);
         radnetz.kanteHinzufuegen(r,b,25);
         radnetz.tiefensucheStarten(z);
+        radnetz.pfadAusgeben();
     }
 
     public Graph getRadnetz() {
@@ -47,6 +48,7 @@ class Test
     {
         radnetz.knotenAusgeben();
         radnetz.adjazenmatrixAusgeben();
+
     }
 
     public static void main(String[] args) {
